@@ -32,6 +32,9 @@ public class ViewManager {
         return manager;
     }
     public void showFloatBall() {
+        if (floatBall != null){
+            return;
+        }
         floatBall = new FloatingView(context);
         windowManager = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
         if (floatBallParams == null) {
@@ -39,7 +42,7 @@ public class ViewManager {
             floatBallParams.width = floatBall.width;
             floatBallParams.height = floatBall.height;
             floatBallParams.gravity = Gravity.TOP | Gravity.LEFT;
-            floatBallParams.type = WindowManager.LayoutParams.TYPE_TOAST;
+            floatBallParams.type = WindowManager.LayoutParams.TYPE_SYSTEM_ALERT;
             floatBallParams.flags = WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE | WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL;
             floatBallParams.format = PixelFormat.RGBA_8888;
         }
@@ -50,7 +53,7 @@ public class ViewManager {
             @Override
             public void onClick(View v) {
                 EventBus.getDefault().post(MyAccessibilityService.BACK);
-                Toast.makeText(context, "点击了悬浮球 执行后退操作", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, "点击了悬浮球 执行后退操作", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -58,7 +61,7 @@ public class ViewManager {
             @Override
             public boolean onLongClick(View v) {
                 EventBus.getDefault().post(MyAccessibilityService.HOME);
-                Toast.makeText(context, "长按了悬浮球  执行返回桌面", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, "长按了悬浮球  执行返回桌面", Toast.LENGTH_SHORT).show();
                 return false;
             }
         });

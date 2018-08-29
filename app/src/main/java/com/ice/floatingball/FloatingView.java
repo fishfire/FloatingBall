@@ -32,7 +32,7 @@ public class FloatingView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         //画大圆
-        paint.setStyle(Paint.Style.FILL);
+        paint.setStyle(Paint.Style.STROKE);
         paint.setAntiAlias(true);
         paint.setColor(getResources().getColor(R.color.state_one));
         canvas.drawCircle(width/2,width/2,width/2,paint);
